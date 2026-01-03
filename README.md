@@ -2,5 +2,10 @@
 
 -   [x] Basics revisited
     -   HTML
+        -   Tags
+        -   Attributes
     -   CSS
-    -   JS
+        -   Inline CSS
+        -   CSS Properties
+        -   Flexbox
+    -   JavaScript
