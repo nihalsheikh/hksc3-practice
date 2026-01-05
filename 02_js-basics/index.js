@@ -3,16 +3,28 @@
 // a = 2;
 // console.log(a);
 
-let firstName = "John";
-let age = 24;
-let isMarried = "monkey";
+// let firstName = "John";
+// let age = 24;
+// let isMarried = "monkey";
 
 // console.log("This person's name is " + firstName + " and age is " + age);
 
-if (isMarried == true) {
-	console.log(firstName + " is married.");
+// if (isMarried == true) {
+// 	console.log(firstName + " is married.");
+// }
+
+// if (isMarried == false) {
+// 	console.log(firstName + " is not married.");
+// }
+
+// Callback Function
+function printAnswer(a) {
+	console.log(`answer is: ${a}`);
 }
 
-if (isMarried == false) {
-	console.log(firstName + " is not married.");
+function test(num1, num2, printFn) {
+	const ans = num1 + num2;
+	printFn(ans);
 }
+
+test(2, 3, printAnswer);
