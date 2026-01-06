@@ -28,3 +28,12 @@ function test(num1, num2, printFn) {
 }
 
 test(2, 3, printAnswer);
+
+function greet() {
+	console.log("Hello World");
+}
+
+setTimeout(greet, 2 * 1000);
+console.log("Timeout Done, Interval Starts");
+
+setInterval(greet, 3 * 1000);
