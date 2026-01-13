@@ -10,6 +10,8 @@ var users = [
 	},
 ];
 
+app.use(express.json()); // middleware that parse data from JSON format
+
 app.get("/", (req, res) => {
 	const johnKidneys = users[0].kidneys;
 	const totalKidneys = johnKidneys.length;
@@ -31,9 +33,23 @@ app.get("/", (req, res) => {
 	});
 });
 
-// app.post("/", (req, res) => {});
+app.post("/", (req, res) => {
+	// console.log(req.body); // json body needs to be parsed before accessing, otherwise we get 'undefined'
+	const isHealthy = req.body.isHealthy;
+	users[0].kidneys.push({
+		healthy: isHealthy,
+	});
 
-// app.put("/", (req, res) => {});
+	res.json({
+		msg: "Done!",
+	});
+});
+
+app.put("/", (req, res) => {
+	for (let i = 0; i < users[0].kidneys.length; i++) {
+		users[0].kidneys[i].healthy = true;
+	}
+});
 
 // app.delete("/", (req, res) => {});
 
