@@ -6,7 +6,7 @@ const PORT = 3000;
 var users = [
 	{
 		name: "John",
-		kidneys: [{ healthy: false }, { healthy: true }],
+		kidneys: [{ healthy: true }, { healthy: true }],
 	},
 ];
 
@@ -49,6 +49,10 @@ app.put("/", (req, res) => {
 	for (let i = 0; i < users[0].kidneys.length; i++) {
 		users[0].kidneys[i].healthy = true;
 	}
+
+	res.json({
+		msg: "all healthy again!",
+	});
 });
 
 // app.delete("/", (req, res) => {});
