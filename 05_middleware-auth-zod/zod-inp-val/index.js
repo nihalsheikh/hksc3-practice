@@ -8,7 +8,11 @@ const PORT = 3000;
 // Structure of our input
 const kidneyArr = zod.array(zod.number());
 
-app.use(express.json()); 
+app.use(express.json());
+
+app.get("/", (req, res) => {
+	res.send("Patient Waiting Area");
+});
 
 app.post("/health-checkup", function (req, res) {
 	// expected input: {kidneys: [1, 2]}
@@ -17,6 +21,12 @@ app.post("/health-checkup", function (req, res) {
 
 	res.send({
 		response,
+	});
+});
+
+app.use(function (err, req, res, next) {
+	res.send({
+		msg: "Something is up with the server",
 	});
 });
 
