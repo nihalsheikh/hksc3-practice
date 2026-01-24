@@ -19,9 +19,15 @@ app.post("/health-checkup", function (req, res) {
 	const kidneys = req.body.kidneys;
 	const response = kidneyArr.safeParse(kidneys);
 
-	res.send({
-		response,
-	});
+	if (!response.success) {
+		res.status(411).json({
+			msg: "Invalid Input",
+		});
+	} else { 
+		res.send({
+			response,
+		});
+	}
 });
 
 app.use(function (err, req, res, next) {
