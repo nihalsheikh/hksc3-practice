@@ -6,7 +6,7 @@ const jwtPassword = "Z#abc@123";
 
 const PORT = 3000;
 
-const userData = [
+const fakeUserData = [
 	{
 		username: "johnwick@proton.me",
 		password: "lily&dog",
@@ -24,26 +24,21 @@ const userData = [
 	},
 ];
 
-// middleware to check for sign-in user
-function isSignedIn(req, res, next) {}
-
 // check if user exists
 function userExists(user, pswd) {
 	// return true or false based on if the user exist in userData arr
 	let userInDb = false;
 
-	for (let i = 0; i < userData.length; i++) {
-		if (userData[i].username === user && userData[i].password === pswd) {
+	for (let i = 0; i < fakeUserData.length; i++) {
+		if (
+			fakeUserData[i].username === user &&
+			fakeUserData[i].password === pswd
+		) {
 			userInDb = true;
 		}
 	}
 
 	return userInDb;
-}
-
-// function to get user data
-async function getData(req, res, next) {
-	const data = await fetch("https://fakerapi.it/api/v1/persons");
 }
 
 // parse the body
@@ -62,7 +57,7 @@ app.get("/users", (req, res) => {
 		const username = decodedToken.username;
 
 		res.status(200).json({
-			users: userData.filter((value) => {
+			users: fakeUserData.filter((value) => {
 				if (value.username === username) {
 					return false;
 				} else {
