@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Simple Interest Calculator</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<label for="principal">Principal Amount</label>
+			<input type="text" placeholder="pricipal" id="pric" />
+
+			<label for="rate">Rate of Interest</label>
+			<input type="text" placeholder="rate" id="rate" />
+
+			<label for="time">Time</label>
+			<input type="text" placeholder="time" id="time" />
+
+			<button onClick="simpleInterest()">
+				Calculate Simple Interest
+			</button>
+
+			<p id="answer">Simple Interest is:</p>
+
+			<script src="index.js"></script>
+		</div>
+	</body>
+</html>
