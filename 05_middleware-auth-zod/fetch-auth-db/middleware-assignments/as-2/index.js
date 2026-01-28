@@ -20,7 +20,9 @@ app.use(function (req, res, next) {
 	// count the requests by a user
 	const userId = req.headers["user-id"];
 
+	// initially the numberOfRequestsForUser[userId] for user will be 'undefined'
 	if (numberOfRequestsForUser[userId]) {
+		// when numberOfRequestsForUser[userId] >= 1
 		numberOfRequestsForUser[userId] = numberOfRequestsForUser[userId] + 1;
 		// limit the rate to 5/sec
 		if (numberOfRequestsForUser[userId] > 5) {
