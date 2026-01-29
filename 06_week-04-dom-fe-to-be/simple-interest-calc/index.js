@@ -17,8 +17,11 @@ function simpleInterest() {
 }
 
 app.get("/interest", (req, res) => {
+	// Principal Amount
 	const principal = req.query.principal;
+	// Rate of Interest
 	const rate = req.query.rate;
+	// Time (in years)
 	const time = req.query.time;
 
 	const result =
