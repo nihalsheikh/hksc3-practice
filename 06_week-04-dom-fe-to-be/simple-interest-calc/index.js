@@ -25,6 +25,7 @@ app.get("/interest", (req, res) => {
 	const time = req.query.time;
 
 	const result =
+		// query params are string, so convert it into number
 		(parseInt(principal) * parseInt(rate) * parseInt(time)) / 100;
 
 	res.status(200).send(`Simple Interest is: ${result}`);
