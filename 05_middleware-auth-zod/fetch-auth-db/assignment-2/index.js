@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const jwtPassword = "Z#123@abc";
 
+// get string from .env file
 const mongoUrl = process.env.MONGODB_URL;
 
 // connect to mongodb
