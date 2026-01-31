@@ -31,6 +31,7 @@ app.get("/interest", (req, res) => {
 	res.status(200).send(`Simple Interest is: ${result}`);
 });
 
+// PORT, server is listening to
 app.listen(PORT, () => {
 	console.log(`server is on http://localhost:${PORT}`);
 });
