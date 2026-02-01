@@ -3,6 +3,17 @@ const app = express();
 
 const PORT = 3000;
 
+let timeout;
+function debounceRequest() {
+	// clear the clock first
+	clearTimeout(timeout);
+
+	// start a new clock, or call the simpleInterest Function after the clock time ends
+	timeout = setTimeout(() => {
+		simpleInterest();
+	}, 1000); // time delay of 1 second or 1000 ms
+}
+
 function simpleInterest() {
 	const principalAmount = document.getElementById("pric").value;
 	const rate = document.getElementById("rate").value;
