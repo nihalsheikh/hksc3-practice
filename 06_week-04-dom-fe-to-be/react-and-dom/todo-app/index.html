@@ -1,0 +1,48 @@
+<htm>
+	<head>
+		<title>Todo App</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1>Todo Application</h1>
+		<div class="main-container">
+			<!-- Todo Form -->
+			<div class="form-container">
+				<h2>Add Todo</h2>
+				<label for="task">Task:</label>
+				<input type="text" placeholder="Describe your task" id="task" />
+
+				<label for="time">Time:</label>
+				<input
+					type="text"
+					placeholder="Timing for your task"
+					id="timing"
+				/>
+
+				<button onClick="addTodo()" class="add-todo-btn">
+					Add Todo
+				</button>
+			</div>
+
+			<!-- Todos -->
+			<div class="todo-container">
+				<div id="todo-task-list">
+					<h2>My Todos</h2>
+					<!-- <div class="todo-task"> -->
+					<!-- <label for="task-details">Task Details:</label>
+						<p id="task-details">Task Details</p>
+
+						<label for="task-timing">Timing:</label>
+						<p id="task-timing">Task Timing</p>
+
+						<button id="task-done" class="task-done-btn">
+							Mark as done
+						</button> -->
+					<!-- </div> -->
+				</div>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</htm>
