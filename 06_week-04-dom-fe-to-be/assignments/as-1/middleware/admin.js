@@ -1,21 +1,24 @@
-// Middleware to authenticate Admin User
+// Check Admin authentication
+const { Admin } = require("../db/index");
+
 const adminMiddleware = (req, res, next) => {
-	// authenticate the admin with the credentials
+	// get the admin credentials from headers
 	const username = req.headers.username;
 	const password = req.headers.password;
 
-	// verify credentials
-	if (!username && !password) {
-		res.status(403).json({ message: "Invalid credentials" });
-	}
-
-	// check if admin data exists in the DB
-	try {
-		// connectToDb
-	} catch (err) {
-		// throw error if
-	}
+	// check if 'username' and 'password' exist in db
+	Admin.findOne({
+		username: username,
+		password: password,
+	}).then(function (value) {
+		if (value) {
+			next();
+		} else {
+			res.status(403).json({ message: "Admin doesn't exist." });
+		}
+	});
 };
 
 // export this middleware
+module
 module.exports = adminMiddleware;
