@@ -20,5 +20,4 @@ const adminMiddleware = (req, res, next) => {
 };
 
 // export this middleware
-module
 module.exports = adminMiddleware;
