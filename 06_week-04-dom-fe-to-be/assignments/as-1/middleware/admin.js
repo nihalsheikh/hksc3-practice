@@ -12,8 +12,9 @@ const adminMiddleware = (req, res, next) => {
 		password: password,
 	}).then(function (value) {
 		if (value) {
-			next();
+			next(); // go to next, if credentails are okay
 		} else {
+			// return error status and user not exist msg
 			res.status(403).json({ message: "Admin doesn't exist." });
 		}
 	});
