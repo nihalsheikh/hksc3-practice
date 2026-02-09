@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const router = Router();
 
+const { Admin } = require("../db");
+
 const adminMiddleware = require("../middleware/admin.js");
 
 // #############===== Admin Routes =====#############
@@ -9,12 +11,13 @@ router.post("/signup", (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
 
-	if (!username && !password) {
-		res.status(411).json({ message: "Error in username or password" });
-		return;
-	}
-
-	// connectToDb
+	// check if username and password exist in DB
+	// then wait for it to resolve
+	Admin.create({
+		username, // username: username
+		password, // password: password
+	});
+	
 	// call function to create a new Admin user in Db
 	res.status(200).json({ message: "Admin created successfully" });
 });

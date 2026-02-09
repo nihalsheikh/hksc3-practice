@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const DB_URL = process.env.MONGODB_URL;
 mongoose.connect(DB_URL);
 
-// Admin Schema
+// Admin Schema ex: { username: 'admin', password: 'password123' }
 const AdminSchema = new mongoose.Schema({
 	username: String,
 	password: String,
