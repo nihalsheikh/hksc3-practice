@@ -1,20 +1,51 @@
 const { Router } = require("express");
 const router = Router();
 
+const { User, Course } = require("../db");
+
 const userMiddleware = require("../middleware/user.js");
 
 // #############====== User Routes ======#############
 // New User Signup
-router.post("/signup", (req, res) => {});
+router.post("/signup", async (req, res) => {
+	const username = req.body.username;
+	const password = req.body.password;
+
+	await User.create({ username, password });
+
+	res.status(200).json({ message: "User created successfully" });
+});
 
 // List of all the courses
-router.get("/courses", (req, res) => {});
+// this endpoint is open to all, that's why no middleware is used here
+router.get("/courses", async (req, res) => {
+	const allCourses = await Course.find({});
+	res.json({ courses: allCourses });
+});
 
 // User purchases a course
-router.post("/courses/:courseId", (req, res) => {});
+router.post("/courses/:courseId", userMiddleware, async (req, res) => {
+	// get course id from the url
+	const courseId = req.params.courseId;
+
+	// get username from the headers
+	const username = req.headers.username;
+
+	// Update the User with the details of the course
+	try {
+		await User.updateOne(
+			{ username: username },
+			{ $push: { purchasedCourses: courseId } },
+		);
+	} catch (err) {
+		console.log(err);
+	}
+
+	res.status(200).json({ message: "Course purchased successfully" });
+});
 
 // All the User's purchased courses
-router.get("/purchased-courses", (req, res) => {
+router.get("/purchased-courses", userMiddleware, (req, res) => {
 	res.send("All the Purchased Courses will appear here.");
 });
 
