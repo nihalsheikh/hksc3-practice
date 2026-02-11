@@ -45,8 +45,16 @@ router.post("/courses/:courseId", userMiddleware, async (req, res) => {
 });
 
 // All the User's purchased courses
-router.get("/purchased-courses", userMiddleware, (req, res) => {
-	res.send("All the Purchased Courses will appear here.");
+router.get("/purchasedCourses", userMiddleware, async (req, res) => {
+	const username = req.headers.username;
+
+	const user = await User.findOne({ username: username });
+
+	const courses = await Course.find({
+		_id: { $in: user.purchasedCourses },
+	});
+
+	res.json({ purchasedCourses: courses });
 });
 
 module.exports = router;
