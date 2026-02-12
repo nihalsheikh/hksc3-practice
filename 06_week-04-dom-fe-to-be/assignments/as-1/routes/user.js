@@ -1,4 +1,6 @@
 const { Router } = require("express");
+const jwt = require("jsonwebtoken");
+
 const router = Router();
 
 const { User, Course } = require("../db");
@@ -14,6 +16,11 @@ router.post("/signup", async (req, res) => {
 	await User.create({ username, password });
 
 	res.status(200).json({ message: "User created successfully" });
+});
+
+// User Signin
+router.post("/signin", jwtTokenAuth, (req, res) => {
+	const token = jet;
 });
 
 // List of all the courses
