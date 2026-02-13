@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const jwt = require("jsonwebtoken");
 
 const router = Router();
 
@@ -19,7 +18,7 @@ router.post("/signup", async (req, res) => {
 });
 
 // User Signin
-router.post("/signin", jwtTokenAuth, (req, res) => {
+router.post("/signin", (req, res) => {
 	const token = jet;
 });
 
