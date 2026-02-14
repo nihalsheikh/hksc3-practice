@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Why react?</title>
+	</head>
+	<body>
+		<button onClick="countIncrease()" id="countBtn">Counter: 0</button>
+		<script>
+			function countIncrease() {
+				let btnText = document.getElementById("countBtn").innerHTML;
+
+				let btnCountValue = btnText.split(" ")[1];
+
+				let newCountValue = parseInt(btnCountValue) + 1;
+				document.getElementById("countBtn").innerHTML =
+					`Counter: ${newCountValue}`;
+			}
+		</script>
+	</body>
+</html>

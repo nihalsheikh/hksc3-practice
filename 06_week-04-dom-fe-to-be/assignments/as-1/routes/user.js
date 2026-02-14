@@ -1,8 +1,8 @@
 const { Router } = require("express");
-
 const router = Router();
 
 const { User, Course } = require("../db");
+const { JWT_SECRET_KEY } = require("../config");
 
 const userMiddleware = require("../middleware/user.js");
 
@@ -18,8 +18,21 @@ router.post("/signup", async (req, res) => {
 });
 
 // User Signin
-router.post("/signin", (req, res) => {
-	const token = jet;
+router.post("/signin", async (req, res) => {
+	const username = req.body.username;
+	const password = req.body.password;
+
+	const normalUser = await User.find({
+		username: username,
+		password: password,
+	});
+
+	if (normalUser) {
+		const token = jwt.sign({ username }, JWT_SECRET_KEY);
+		res.status(200).json({ token });
+	} else {
+		res.status(403).json({ message: "Incorrect email or password" });
+	}
 });
 
 // List of all the courses

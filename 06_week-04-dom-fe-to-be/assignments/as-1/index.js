@@ -6,8 +6,6 @@ const dotenv = require("dotenv").config();
 const app = express();
 const PORT = 3000;
 
-const JWT_SECRET_KEY = process.env.JWT_SECRET;
-
 // route files
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
@@ -29,5 +27,3 @@ app.use("/user", userRouter);
 app.listen(PORT, () => {
 	console.log(`Server is running on - http://localhost:${PORT}`);
 });
-
-module.exports = JWT_SECRET_KEY;

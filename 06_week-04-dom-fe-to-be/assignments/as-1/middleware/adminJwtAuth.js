@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { Admin } = require("../db");
 
-const secret = require("../index");
+const { JWT_SECRET_KEY } = require("../config");
 
 const adminJwtAuth = async (req, res, next) => {
 	// Get the token from Header
@@ -14,8 +14,9 @@ const adminJwtAuth = async (req, res, next) => {
 	const jwtToken = words[1];
 
 	// verify the token
-	const decodedVaue = jwt.verify(jwtToken, secret);
+	const decodedVaue = jwt.verify(jwtToken, JWT_SECRET_KEY);
 
+	// check for username && type: 'admin' | 'user'
 	if (decodedVaue.username) {
 		next();
 	} else {
