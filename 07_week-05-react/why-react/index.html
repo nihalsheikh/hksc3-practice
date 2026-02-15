@@ -7,6 +7,9 @@
 		<button onClick="countIncrease()" id="countBtn">Counter: 0</button>
 		<script>
 			function countIncrease() {
+				let counter = {
+					value: 0,
+				};
 				let btnText = document.getElementById("countBtn").innerHTML;
 
 				let btnCountValue = btnText.split(" ")[1];
