@@ -11,13 +11,13 @@ function App() {
 }
 
 // Button Component
-// props is object
-const CustomButton = (props) => {
+// props => {count, setCount}
+function CustomButton(props) {
 	const onClickHandler = () => {
 		props.setCount(props.count + 1);
 	};
 
 	return <button onClick={onClickHandler}>Counter {props.count}</button>;
-};
+}
 
 export default App;
