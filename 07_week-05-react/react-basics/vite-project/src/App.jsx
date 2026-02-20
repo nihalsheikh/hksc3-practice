@@ -21,5 +21,11 @@ function CustomButton(props) {
 }
 
 // Custom Todo Component
+function addTodoBtn(props) {
+	props.setTodo((prev) => [...props.todos, { prev }]);
+}
+function CustomTodo() {
+	addTodoBtn();
+}
 
 export default App;
