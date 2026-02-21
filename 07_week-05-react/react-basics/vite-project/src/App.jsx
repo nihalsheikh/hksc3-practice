@@ -24,6 +24,7 @@ function CustomButton(props) {
 function addTodoBtn(props) {
 	props.setTodo((prev) => [...props.todos, { prev }]);
 }
+// create new todo
 function CustomTodo() {
 	addTodoBtn();
 }
