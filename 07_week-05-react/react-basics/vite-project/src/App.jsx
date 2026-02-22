@@ -26,6 +26,7 @@ function addTodoBtn(props) {
 }
 // create new todo
 function CustomTodo() {
+	// adds a new todo to list
 	addTodoBtn();
 }
 
