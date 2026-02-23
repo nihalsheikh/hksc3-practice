@@ -22,6 +22,8 @@ function CustomButton(props) {
 
 // Custom Todo Component
 function addTodoBtn(props) {
+	// use previos state to make change to a state variable
+	// don't make changes directly to the state variable
 	props.setTodo((prev) => [...props.todos, { prev }]);
 }
 // create new todo
