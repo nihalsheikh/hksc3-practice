@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { boolean } = require("zod");
 const connectionUrl = process.env.MONGODB_URL;
 
+// connect to db
 async function connectToDb() {
 	try {
 		await mongoose.connect(connectionUrl);
@@ -14,19 +14,21 @@ async function connectToDb() {
 }
 
 // User Schema
-const userSchema = new mongoose.Schema({
+const userDbSchema = new mongoose.Schema({
 	username: String,
 	email: String,
 	password: String,
+	// date: Date.now(),
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userDbSchema);
 
 // Todo Schema
 const todoDbSchema = new mongoose.Schema({
 	title: String,
 	description: String,
 	completed: Boolean,
+	// date: Date.now(),
 });
 
 const Todo = mongoose.model("Todos", todoDbSchema);
