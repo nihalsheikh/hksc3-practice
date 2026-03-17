@@ -6,7 +6,7 @@ const { z } = require("zod");
 const userSchema = z.object({
 	username: z.string().max(50).min(2),
 	email: z.email(),
-	password: z.password(),
+	password: z.string().min(8),
 	// date: z.date(),
 });
 
