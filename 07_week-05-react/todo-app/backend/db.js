@@ -1,24 +1,39 @@
 const mongoose = require("mongoose");
-
-require("dotenv").config();
-
+const { boolean } = require("zod");
 const connectionUrl = process.env.MONGODB_URL;
 
-const connectToDb = async () => {
+async function connectToDb() {
 	try {
 		await mongoose.connect(connectionUrl);
-
-		console.log("Connected to database");
+		console.log("DB Connection Successfull");
 	} catch (error) {
-		console.error("Database connection failed");
-		res.status(404).json({ message: "Database connection failed" });
+		console.log("DB connection error", error);
+		res.status(404).json({ message: "Something is up with DB" });
 		return;
 	}
-};
+}
 
-const todoSchema = new mongoose.Schema({
-	title: String,
-	description: String,
+// User Schema
+const userSchema = new mongoose.Schema({
+	username: String,
+	email: String,
+	password: String,
 });
 
-const Todo = mongoose.model("Todo", todoSchema);
+const User = mongoose.model("User", userSchema);
+
+// Todo Schema
+const todoDbSchema = new mongoose.Schema({
+	title: String,
+	description: String,
+	completed: Boolean,
+});
+
+const Todo = mongoose.model("Todos", todoDbSchema);
+
+// exports
+module.exports = {
+	connectToDb,
+	User,
+	Todo,
+};
