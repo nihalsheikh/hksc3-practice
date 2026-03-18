@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: blanchedalmond;
+    margin-right: 10px;
+}
+
+.formInput {
+    background-color: whitesmoke;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid black;
+}
+
+.textarea-height {
+    height: 150px;
+    width: 250px;
+}
+
+.todo-add-btn {
+    padding: 10px;
+    border: 1px solid darkgreen;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: medium;
+    cursor: pointer;
+    background-color: chartreuse;
+    color: rgb(85, 83, 83);
+}
+
+
+.todo-add-btn:hover {
+    background-color: greenyellow;
+    color: black
+}

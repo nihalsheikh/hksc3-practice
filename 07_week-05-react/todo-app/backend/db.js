@@ -26,7 +26,10 @@ const User = mongoose.model("User", userDbSchema);
 const todoDbSchema = new mongoose.Schema({
 	title: String,
 	description: String,
-	completed: Boolean,
+	completed: {
+		type: Boolean,
+		default: false,
+	},
 	// date: Date.now(),
 });
 
