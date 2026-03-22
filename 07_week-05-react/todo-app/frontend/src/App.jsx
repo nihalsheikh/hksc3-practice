@@ -1,12 +1,12 @@
 import "./App.css";
 import CreateTodo from "./components/CreateTodo";
-import TodoList from "./components/TodoList";
+import Todos from "./components/Todos";
 
 const App = () => {
 	return (
 		<div className="container">
 			<CreateTodo />
-			<TodoList />
+			<Todos />
 		</div>
 	);
 };
