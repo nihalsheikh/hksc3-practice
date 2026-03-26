@@ -5,7 +5,7 @@ const { z } = require("zod");
 */
 const userSchema = z.object({
 	username: z.string().max(50).min(2),
-	email: z.email(),
+	email: z.string().email(),
 	password: z.string().min(8),
 	// date: z.date(),
 });
@@ -14,7 +14,7 @@ const userSchema = z.object({
 const todoSchema = z.object({
 	title: z.string().max(20).min(1),
 	description: z.string().max(70).min(1),
-	completed: z.boolean(),
+	completed: z.boolean().optional(),
 	// date: z.date(),
 });
 

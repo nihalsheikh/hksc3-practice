@@ -1,17 +1,23 @@
 const express = require("express");
+const cors = require("cors");
 
 const { todoSchema, updateTodoSchema } = require("./types");
 const { Todo, User, connectToDb } = require("./db");
 
 const app = express();
+app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
 // env vars
 require("dotenv").config();
 
-// parse req body middleware
-app.use(express.json());
+// Get rid of CORS Error (allow requests from FE to BE)
+app.use(
+	cors({
+		origin: "http://localhost:5173",
+	}),
+);
 
 connectToDb();
 
@@ -41,7 +47,7 @@ app.post("/todo", async function (req, res) {
 		await Todo.create({
 			title,
 			description,
-			completed,
+			completed: completed ?? false,
 		});
 
 		res.status(200).json({ message: "Todo created successfully." });
