@@ -3,7 +3,7 @@ import { useState } from "react";
 /*
 	todos = [{ title: "abc123", description: "abc123ohujhd"}]
 */
-const Todos = ({ todos }) => {
+const Todos = ({ todos, setTodos }) => {
 	const [isComplete, setCompleted] = useState(false); // complete-btn
 
 	// when called, set todo as 'true'

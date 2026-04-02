@@ -51,6 +51,7 @@
     width: fit-content;
     height: fit-content;
     width: 500px;
+    margin-bottom: 4px;
 }
 
 .todo-btns-container {

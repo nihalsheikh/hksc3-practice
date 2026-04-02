@@ -6,10 +6,13 @@ import Todos from "./components/Todos";
 const App = () => {
 	const [todos, setTodos] = useState([]);
 
+
+
 	return (
 		<div className="container">
-			<CreateTodo />
-			<Todos todos={todos} />
+      <CreateTodo setTodos={setTodos} todos={todos} />
+
+			<Todos todos={todos} setTodos={setTodos} />
 		</div>
 	);
 };

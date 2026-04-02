@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CreateTodo = () => {
+const CreateTodo = ({ setTodos, todos }) => {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 
@@ -24,6 +24,8 @@ const CreateTodo = () => {
 
 			await result.json();
 			alert("Todo added");
+
+      setTodos([{ title, description }, ...todos]);
 		} catch (error) {
 			console.error(error);
 			alert("Error adding todo");
