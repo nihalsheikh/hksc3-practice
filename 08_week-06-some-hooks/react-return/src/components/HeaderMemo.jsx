@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 // memo: skip re-rendering when the props are unchanged
 const HeaderMemo = memo(function HeaderMemo({ title }) {
