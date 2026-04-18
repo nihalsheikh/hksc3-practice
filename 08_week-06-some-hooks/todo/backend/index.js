@@ -51,11 +51,9 @@ app.get("/todo", (req, res) => {
 });
 
 app.post("/todo", (req, res) => {
-  console.log(req.body);
-  console.log(typeof req.body, req.body);
   const todoData = req.body;
   const parsedData = todoSchema.safeParse(todoData);
-  console.log(parsedData);
+  // console.log(parsedData);
 
   if (!parsedData.success) {
     res.status(411).json({ message: "Wrong Inputs" });
@@ -67,7 +65,7 @@ app.post("/todo", (req, res) => {
   const newTodo = { id: COUNTER++, title: title, descritpion: description };
   // use 'unshift' method to add newTodo to the Start of the Array
   todoList.push(newTodo);
-  console.log(todoList);
+  // console.log(todoList);
 
   // make sure to send the response forward
   res.status(201).json({ message: "Todo Created", todos: todoList });
