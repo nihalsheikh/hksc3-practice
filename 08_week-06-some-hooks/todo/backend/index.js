@@ -43,11 +43,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/todo", (req, res) => {
+  const id = req.query.id;
+  if (id) {
+    const todoData = todoList.find((todo) => todo.id === Number(id));
+    if (!todoData) {
+      return res.status(404).json({ message: `Todo not found with id: ${id}` });
+    }
+
+    return res.status(200).json({ message: "Todo Found", todos: [todoData] });
+  }
+
   if (todoList.length === 0) {
     return res.status(200).json({ message: "No Todos found", todos: [] });
   }
 
-  res.status(200).json({ message: "Todo List found", todos: todoList });
+  return res.status(200).json({ message: "Todo List found", todos: todoList });
 });
 
 app.post("/todo", (req, res) => {
@@ -62,13 +72,24 @@ app.post("/todo", (req, res) => {
 
   const { title, description } = parsedData.data;
 
-  const newTodo = { id: COUNTER++, title: title, descritpion: description };
+  const newTodo = { id: COUNTER++, title: title, description: description };
   // use 'unshift' method to add newTodo to the Start of the Array
   todoList.push(newTodo);
   // console.log(todoList);
 
   // make sure to send the response forward
   res.status(201).json({ message: "Todo Created", todos: todoList });
+});
+
+// Route Param
+app.get("/todo/:id", (req, res) => {
+  const id = req.params.id;
+  const todoData = todoList.find((todo) => todo.id === Number(id));
+  if (!todoData) {
+    return res.status(404).json({ message: `Todo not found with id: ${id}` });
+  }
+
+  res.status(200).json({ message: "Todo Found", todos: [todoData] });
 });
 
 app.listen(PORT, () => {
