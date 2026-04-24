@@ -7,6 +7,7 @@ const App = () => {
 
   return (
     <div>
+      {/* To pass multiple props, send an object in value={{count, setCount}} */}
       <CountContext.Provider value={count}>
         <Count count={count} setCount={setCount} />
       </CountContext.Provider>
