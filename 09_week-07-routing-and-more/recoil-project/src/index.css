@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(60, 59, 59);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.element {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px 14px;
+    color: #908585;
+    transition: all 0.2s ease;
+}
+
+.element:hover {
+    color: white;
+}
+
+.element:focus-visible {
+    outline: 2px solid #999;
+    border-radius: 4px;
+}
+
+.element:active {
+    border-bottom: 10px solid yellow;
+}
+
+.element svg {
+    font-size: 28px;
+}
